@@ -498,6 +498,14 @@ function finalize(c){
   c.data.refId='IG-C-'+new Date().getFullYear()+'-'+Math.floor(100000+Math.random()*900000);
   botSay(c,tx('done',c.data.firstName||c.data.name||''),()=>showQual(c));
   console.log('InjuredGuide submission:',JSON.stringify(c.data,null,2));
+  // ── Send lead into the MDconcierge portal (Supabase) ──
+  try{
+    var SUPABASE_URL='https://pjdbzrzadlldojuvdrfj.supabase.co';
+    var SUPABASE_KEY='sb_publishable_Syx-8oQDjnR-XYYMA2T-wQ_qyKuFdfL';
+    var _d=c.data;
+    var _notes=[_d.email?('Email: '+_d.email):'',_d.dob?('DOB: '+_d.dob):'',(_d.city||_d.homeState)?('Location: '+[_d.city,_d.homeState].filter(Boolean).join(', ')):'',('Score: '+(_d.score!=null?_d.score:'')+'/10'),_d.description?('Description: '+_d.description):'','Raw: '+JSON.stringify(_d)].filter(Boolean).join(' | ');
+    fetch(SUPABASE_URL+'/rest/v1/cases',{method:'POST',headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({case_id:_d.refId||null,patient_first:_d.firstName||null,patient_last:_d.lastName||null,patient_phone:_d.phone||null,patient_zip:_d.zip||null,injury_type:Array.isArray(_d.bodyParts)?_d.bodyParts.join(', '):(_d.bodyParts||null),case_type:_d.caseType||null,status:'new',lead_source:'injuredguide.com',notes:_notes})}).then(function(r){if(!r.ok){r.text().then(function(t){console.warn('Lead sync failed',r.status,t);});}else{console.log('✓ Lead synced to MDconcierge portal');}}).catch(function(e){console.warn('Lead sync error',e);});
+  }catch(e){console.warn('Lead sync exception',e);}
 }
 
 // Case flows
