@@ -444,31 +444,42 @@ function askContact(c){
   });
 }
 
+// ── Intake normalizers (clean every field before it can reach the portal) ──
+function igTitle(s){return (s||'').toLowerCase().replace(/\b[a-z]/g,function(m){return m.toUpperCase();}).replace(/\s+/g,' ').trim();}
+function igFmtPhone(raw){var d=(raw||'').replace(/\D/g,'');if(d.length===11&&d.charAt(0)==='1')d=d.slice(1);if(d.length!==10)return null;return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);}
+function igFmtZip(raw){var d=(raw||'').replace(/\D/g,'');return d.length===5?d:null;}
+function igFmtDob(raw){var m=(raw||'').trim().match(/^(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{2,4})$/);if(!m)return null;var mo=+m[1],da=+m[2],yr=+m[3];if(m[3].length===2)yr+=(yr>30?1900:2000);if(mo<1||mo>12||da<1||da>31)return null;var dt=new Date(yr,mo-1,da);if(dt.getFullYear()!==yr||dt.getMonth()!==mo-1||dt.getDate()!==da||yr<1900||dt>new Date())return null;return ('0'+mo).slice(-2)+'/'+('0'+da).slice(-2)+'/'+yr;}
+function igFmtEmail(raw){var e=(raw||'').trim().toLowerCase();return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)?e:null;}
 function igSubmit(){
   const c=window._igC;
-  const fn=document.getElementById('ci-fn')?.value.trim();
-  const ln=document.getElementById('ci-ln')?.value.trim();
-  const dob=document.getElementById('ci-dob')?.value.trim();
-  const city=document.getElementById('ci-city')?.value.trim();
-  const st=document.getElementById('ci-st')?.value.trim();
-  const zip=document.getElementById('ci-zip')?.value.trim();
-  const ph=document.getElementById('ci-ph')?.value.trim();
-  const em=document.getElementById('ci-em')?.value.trim();
-  const missing=[];
-  if(!fn)missing.push('First name');
-  if(!ln)missing.push('Last name');
-  if(!ph)missing.push('Phone');
-  if(!em||!em.includes('@'))missing.push('Email');
-  if(!zip)missing.push('ZIP');
-  if(missing.length){
+  const fnR=(document.getElementById('ci-fn')?.value||'').trim();
+  const lnR=(document.getElementById('ci-ln')?.value||'').trim();
+  const dobR=(document.getElementById('ci-dob')?.value||'').trim();
+  const cityR=(document.getElementById('ci-city')?.value||'').trim();
+  const stR=(document.getElementById('ci-st')?.value||'').trim().toUpperCase();
+  const zipR=(document.getElementById('ci-zip')?.value||'').trim();
+  const phR=(document.getElementById('ci-ph')?.value||'').trim();
+  const emR=(document.getElementById('ci-em')?.value||'').trim();
+  // EVERY field is required AND must be valid — incomplete/messy intakes never enter the portal
+  const errs=[];
+  if(!fnR)errs.push('First name');
+  if(!lnR)errs.push('Last name');
+  const dob=igFmtDob(dobR); if(!dobR)errs.push('Date of birth'); else if(!dob)errs.push('Date of birth (MM/DD/YYYY)');
+  if(!cityR)errs.push('City');
+  if(!/^[A-Z]{2}$/.test(stR))errs.push('State (2 letters, e.g. PA)');
+  const zip=igFmtZip(zipR); if(!zipR)errs.push('ZIP'); else if(!zip)errs.push('ZIP (5 digits)');
+  const phone=igFmtPhone(phR); if(!phR)errs.push('Phone'); else if(!phone)errs.push('Phone (10 digits)');
+  const email=igFmtEmail(emR); if(!emR)errs.push('Email'); else if(!email)errs.push('Email (e.g. name@email.com)');
+  if(errs.length){
     const err=document.getElementById('ci-err');
-    if(err){err.textContent='Please complete: '+missing.join(', ');err.style.display='block';}
+    if(err){err.textContent='Please complete/fix: '+errs.join(', ');err.style.display='block';}
     return;
   }
-  Object.assign(c.data,{firstName:fn,lastName:ln,name:fn+' '+ln,dob,city,homeState:st,zip,phone:ph,email:em});
+  const fn=igTitle(fnR), ln=igTitle(lnR), city=igTitle(cityR);
+  Object.assign(c.data,{firstName:fn,lastName:ln,name:fn+' '+ln,dob:dob,city:city,homeState:stR,zip:zip,phone:phone,email:email});
   const inp=document.getElementById(c.inputId);
   if(inp){inp.style.display='none';inp.innerHTML='';}
-  addMsg(c,fn+' '+ln+' · '+ph+' · '+em,true);
+  addMsg(c,fn+' '+ln+' · '+phone+' · '+email,true);
   finalize(c);
 }
 
