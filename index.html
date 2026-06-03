@@ -450,6 +450,21 @@ function igFmtPhone(raw){var d=(raw||'').replace(/\D/g,'');if(d.length===11&&d.c
 function igFmtZip(raw){var d=(raw||'').replace(/\D/g,'');return d.length===5?d:null;}
 function igFmtDob(raw){var m=(raw||'').trim().match(/^(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{2,4})$/);if(!m)return null;var mo=+m[1],da=+m[2],yr=+m[3];if(m[3].length===2)yr+=(yr>30?1900:2000);if(mo<1||mo>12||da<1||da>31)return null;var dt=new Date(yr,mo-1,da);if(dt.getFullYear()!==yr||dt.getMonth()!==mo-1||dt.getDate()!==da||yr<1900||dt>new Date())return null;return ('0'+mo).slice(-2)+'/'+('0'+da).slice(-2)+'/'+yr;}
 function igFmtEmail(raw){var e=(raw||'').trim().toLowerCase();return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)?e:null;}
+// ── Live formatting as the user types (delegated, works on dynamically-built fields) ──
+function igLivePhone(v){var d=v.replace(/\D/g,'');if(d.length===11&&d.charAt(0)==='1')d=d.slice(1);d=d.slice(0,10);if(d.length>6)return '('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);if(d.length>3)return '('+d.slice(0,3)+') '+d.slice(3);if(d.length>0)return '('+d;return '';}
+function igLiveDob(v){var d=v.replace(/\D/g,'').slice(0,8);var o=d.slice(0,2);if(d.length>2)o+='/'+d.slice(2,4);if(d.length>4)o+='/'+d.slice(4,8);return o;}
+document.addEventListener('input',function(e){
+  var t=e.target; if(!t||!t.id) return;
+  if(t.id==='ci-ph'){t.value=igLivePhone(t.value);}
+  else if(t.id==='ci-zip'){t.value=t.value.replace(/\D/g,'').slice(0,5);}
+  else if(t.id==='ci-st'){t.value=t.value.replace(/[^a-zA-Z]/g,'').toUpperCase().slice(0,2);}
+  else if(t.id==='ci-dob'){t.value=igLiveDob(t.value);}
+});
+document.addEventListener('blur',function(e){
+  var t=e.target; if(!t||!t.id) return;
+  if(t.id==='ci-em'){t.value=t.value.trim().toLowerCase();}
+  else if(t.id==='ci-fn'||t.id==='ci-ln'||t.id==='ci-city'){t.value=igTitle(t.value);}
+},true);
 function igSubmit(){
   const c=window._igC;
   const fnR=(document.getElementById('ci-fn')?.value||'').trim();
