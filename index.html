@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053) -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InjuredGuide — Free Legal &amp; Medical Help After an Injury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="index_files/css2" rel="stylesheet">
+<style>
+:root{ --ink:#12181f;--ink2:#1e2a35;--ink3:#2a3a4a; --rust:#c0392b;--rust2:#e74c3c;--rust-light:#fdf0ee; --amber:#d4890a;--amber2:#f0a500; --cream:#faf7f2;--cream2:#f0ebe0;--cream3:#e8e0d0; --white:#fff;--muted:#6b7a8d;--muted2:#9aa5b1; --green:#1a6b3c;--green-bg:#eef8f3; --red:#b82020;--red-bg:#fef2f2; --border:#e2d9cc; --serif:'Bitter',Georgia,serif; --sans:'Source Sans 3',sans-serif; --r:6px; --shadow:0 4px 32px rgba(18,24,31,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.6;overflow-x:hidden;}
+
+/* NAV */
+nav{position:sticky;top:0;left:0;right:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--rust);display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;}
+.nav-logo{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--white);letter-spacing:-.5px;text-decoration:none;}
+.nav-logo em{color:var(--rust2);font-style:normal;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:14px;font-weight:400;transition:color .2s;}
+.nav-links a:hover{color:var(--amber2);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.lang-pill{display:flex;border:2px solid rgba(255,255,255,.35);border-radius:20px;overflow:hidden;gap:0;}
+.lang-btn{padding:7px 16px;font-size:14px;font-weight:700;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.55);font-family:var(--sans);transition:all .2s;letter-spacing:.04em;}
+.lang-btn:hover{color:var(--white);background:rgba(255,255,255,.08);}
+.lang-btn.active{background:var(--rust);color:var(--white);}
+.nav-cta{background:var(--rust);color:var(--white);border:none;padding:9px 20px;font-size:14px;font-weight:600;font-family:var(--sans);border-radius:var(--r);cursor:pointer;transition:background .2s;text-decoration:none;letter-spacing:.02em;}
+.nav-cta:hover{background:var(--rust2);}
+
+/* HERO */
+.hero{min-height:600px;background:var(--ink);display:grid;grid-template-columns:1fr 430px;align-items:center;padding:80px 40px 60px;gap:60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 70% 40%,rgba(192,57,43,.12) 0%,transparent 65%),radial-gradient(ellipse at 20% 80%,rgba(212,137,10,.06) 0%,transparent 60%);}
+.hero-rule{width:48px;height:3px;background:var(--rust);margin-bottom:20px;}
+.hero h1{font-family:var(--serif);font-size:clamp(36px,5vw,56px);font-weight:900;color:var(--white);line-height:1.08;letter-spacing:-1.5px;margin-bottom:20px;}
+.hero h1 em{color:var(--rust2);font-style:normal;position:relative;}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:32px;max-width:460px;font-weight:300;}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+.hero-tag{padding:7px 16px;border:1px solid rgba(255,255,255,.15);border-radius:2px;font-size:13px;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;background:transparent;font-family:var(--sans);}
+.hero-tag:hover,.hero-tag.on{border-color:var(--rust);color:var(--white);background:rgba(192,57,43,.15);}
+.hero-trust{display:flex;gap:20px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.45);}
+.trust-dot{width:5px;height:5px;border-radius:50%;background:var(--rust);flex-shrink:0;}
+
+/* INTAKE WIDGET */
+.widget{background:var(--white);border-radius:10px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.45);max-width:430px;width:100%;justify-self:end;position:relative;z-index:2;animation:rise .7s cubic-bezier(.22,1,.36,1) both;}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.w-head{background:var(--ink2);padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--rust);}
+.w-av{width:36px;height:36px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.w-title{font-size:14px;font-weight:600;color:var(--white);}
+.w-sub{font-size:11px;color:rgba(255,255,255,.4);}
+.w-dot{width:8px;height:8px;border-radius:50%;background:#2ecc71;margin-left:auto;flex-shrink:0;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.w-prog{height:3px;background:rgba(255,255,255,.08);}
+.w-fill{height:100%;background:linear-gradient(90deg,var(--rust),var(--amber2));width:5%;transition:width .4s ease;}
+.w-chat{height:300px;overflow-y:auto;padding:14px;background:#f7f5f1;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;}
+.w-chat::-webkit-scrollbar{width:3px;}
+.w-chat::-webkit-scrollbar-thumb{background:var(--cream3);border-radius:2px;}
+.msg{display:flex;gap:7px;align-items:flex-end;animation:up .3s ease both;}
+@keyframes up{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg.user{flex-direction:row-reverse;}
+.bub{max-width:82%;padding:10px 13px;font-size:14px;line-height:1.5;border-radius:14px;font-family:var(--sans);}
+.msg.bot .bub{background:var(--white);color:var(--ink);border-radius:3px 14px 14px 14px;box-shadow:0 1px 3px rgba(0,0,0,.07);}
+.msg.user .bub{background:var(--ink);color:var(--white);border-radius:14px 14px 3px 14px;font-size:13px;}
+.m-av{width:26px;height:26px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
+.typing{display:flex;align-items:center;gap:4px;padding:10px 12px;}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--muted2);animation:bounce 1.2s infinite;}
+.typing span:nth-child(2){animation-delay:.2s;}.typing span:nth-child(3){animation-delay:.4s;}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.w-btns{padding:10px 12px;display:flex;flex-direction:column;gap:6px;background:var(--white);border-top:1px solid var(--border);}
+.w-btns.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.tap{width:100%;padding:13px 15px;background:var(--cream);border:2px solid var(--border);border-radius:var(--r);font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;text-align:left;font-family:var(--sans);transition:all .15s;display:flex;align-items:center;gap:9px;}
+.tap:hover,.tap:active{border-color:var(--rust);background:var(--rust-light);color:var(--rust);}
+.tap.sel{border-color:var(--rust);background:var(--rust-light);}
+.tap .tic{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);margin-left:auto;flex-shrink:0;transition:all .15s;}
+.tap.sel .tic{background:var(--rust);border-color:var(--rust);}
+.grid2 .tap{justify-content:center;text-align:center;padding:14px 8px;font-size:15px;flex-direction:column;gap:4px;}
+.w-input{display:flex;border-top:1px solid var(--border);}
+#wi{flex:1;border:none;outline:none;padding:13px 15px;font-size:15px;font-family:var(--sans);color:var(--ink);background:var(--white);}
+#wi::placeholder{color:#bbb;}
+#wsend{background:var(--ink);color:var(--amber2);border:none;padding:0 18px;cursor:pointer;font-size:16px;transition:background .2s;}
+#wsend:hover{background:var(--rust);}
+.w-foot{padding:8px 14px;font-size:11px;color:var(--muted2);text-align:center;background:#fafaf8;border-top:1px solid var(--border);}
+.qual-card{padding:14px;background:var(--green-bg);border:1.5px solid #a8e0c0;border-radius:var(--r);}
+.qual-card h3{font-size:15px;color:var(--green);margin-bottom:5px;}
+.qual-card p{font-size:13px;color:var(--muted);line-height:1.55;}
+.disq-card{padding:14px;background:var(--red-bg);border:1.5px solid #fcc;border-radius:var(--r);}
+.disq-card h3{font-size:14px;color:var(--red);margin-bottom:5px;}
+.disq-card p{font-size:12px;color:var(--muted);line-height:1.55;}
+
+/* TRUST BAR */
+.trust-bar{background:var(--ink2);padding:16px 40px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06);}
+.tb-item{text-align:center;}
+.tb-num{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--amber2);}
+.tb-lbl{font-size:11px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.06em;margin-top:2px;}
+
+/* CASE TYPES */
+.cases{padding:80px 40px;background:var(--cream);}
+.section-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);margin-bottom:10px;}
+.section-title{font-family:var(--serif);font-size:36px;font-weight:900;color:var(--ink);letter-spacing:-.5px;line-height:1.1;margin-bottom:10px;}
+.section-title em{color:var(--rust2);font-style:normal;}
+.section-sub{font-size:16px;color:var(--muted);max-width:500px;margin-bottom:48px;font-weight:300;}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.case-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:26px 22px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
+.case-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--rust);transform:scaleY(0);transform-origin:bottom;transition:transform .25s;}
+.case-card:hover{box-shadow:var(--shadow);transform:translateY(-3px);}
+.case-card:hover::after{transform:scaleY(1);}
+.case-icon{font-size:30px;margin-bottom:14px;}
+.case-card h3{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.case-card p{font-size:13px;color:var(--muted);line-height:1.65;}
+.case-more{margin-top:14px;font-size:13px;color:var(--rust);font-weight:600;display:flex;align-items:center;gap:4px;}
+
+/* HOW IT WORKS */
+.how{background:var(--ink);padding:80px 40px;}
+.how .section-title{color:var(--white);}
+.how .section-sub{color:rgba(255,255,255,.45);}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin-top:48px;position:relative;}
+.step{padding:28px 24px;position:relative;}
+.step:not(:last-child)::after{content:'→';position:absolute;right:-8px;top:36px;font-size:22px;color:var(--rust);opacity:.5;}
+.step-n{font-family:var(--serif);font-size:52px;font-weight:900;color:rgba(192,57,43,.15);line-height:1;margin-bottom:10px;}
+.step h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:7px;}
+.step p{font-size:13px;color:rgba(255,255,255,.45);line-height:1.65;}
+
+/* SSDI */
+.ssdi{padding:80px 40px;background:var(--cream2);display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.ssdi-visual{background:var(--ink);border-radius:8px;padding:36px;position:relative;overflow:hidden;}
+.ssdi-visual::before{content:'SSDI';position:absolute;right:-10px;bottom:-20px;font-family:var(--serif);font-size:110px;font-weight:900;color:rgba(192,57,43,.08);letter-spacing:-4px;}
+.ssdi-stat{margin-bottom:24px;}
+.ssdi-stat .n{font-family:var(--serif);font-size:38px;font-weight:900;color:var(--amber2);line-height:1;}
+.ssdi-stat .l{font-size:13px;color:rgba(255,255,255,.4);margin-top:3px;}
+.ssdi-list{list-style:none;margin:20px 0;}
+.ssdi-list li{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:14px;color:var(--muted);line-height:1.55;}
+.ssdi-list li::before{content:'✓';color:var(--rust);font-weight:700;flex-shrink:0;margin-top:1px;}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--white);padding:13px 26px;border-radius:var(--r);font-size:14px;font-weight:600;text-decoration:none;cursor:pointer;border:none;font-family:var(--sans);transition:all .2s;letter-spacing:.02em;}
+.cta-btn:hover{background:var(--rust);}
+.cta-btn.rust{background:var(--rust);}
+.cta-btn.rust:hover{background:var(--rust2);}
+
+/* TESTIMONIALS */
+.testi{padding:80px 40px;background:var(--cream);}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:48px;}
+.t-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:26px 22px;position:relative;}
+.t-card::before{content:'"';font-family:var(--serif);font-size:72px;color:var(--rust);opacity:.15;position:absolute;top:6px;left:16px;line-height:1;}
+.stars{color:var(--amber);font-size:12px;letter-spacing:2px;margin-bottom:10px;}
+.t-card p{font-size:14px;line-height:1.7;color:var(--muted);padding-top:20px;margin-bottom:18px;}
+.t-author{display:flex;align-items:center;gap:11px;}
+.t-av{width:38px;height:38px;border-radius:50%;background:var(--ink2);color:var(--amber2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+.t-name{font-weight:600;font-size:14px;}
+.t-case{font-size:12px;color:var(--rust);}
+
+/* BOTTOM CTA */
+.bcta{background:var(--rust);padding:72px 40px;text-align:center;}
+.bcta h2{font-family:var(--serif);font-size:38px;font-weight:900;color:var(--white);margin-bottom:12px;letter-spacing:-.5px;}
+.bcta p{font-size:16px;color:rgba(255,255,255,.7);margin-bottom:32px;max-width:460px;margin-inline:auto;}
+.btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-white{background:var(--white);color:var(--rust);border:none;padding:13px 28px;border-radius:var(--r);font-size:15px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:all .2s;}
+.btn-white:hover{background:var(--cream2);}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.4);padding:11px 26px;border-radius:var(--r);font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .2s;text-decoration:none;}
+.btn-outline:hover{border-color:var(--white);}
+
+/* FOOTER */
+footer{background:var(--ink);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;border-top:2px solid rgba(192,57,43,.3);}
+.f-logo{font-family:var(--serif);font-size:18px;font-weight:900;color:rgba(255,255,255,.5);}
+.f-logo em{color:var(--rust2);font-style:normal;}
+footer p{font-size:12px;color:rgba(255,255,255,.2);}
+.f-links{display:flex;gap:20px;}
+.f-links a{font-size:12px;color:rgba(255,255,255,.25);text-decoration:none;}
+.f-links a:hover{color:var(--rust2);}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(12,18,26,.88);z-index:300;display:none;align-items:center;justify-content:center;padding:20px;}
+.modal-bg.open{display:flex;}
+.modal{background:var(--white);border-radius:10px;width:100%;max-width:460px;overflow:hidden;animation:rise .3s ease both;}
+
+/* FLOATING */
+.float-btn{position:fixed;bottom:26px;right:26px;z-index:200;background:var(--rust);color:var(--white);border:none;width:56px;height:56px;border-radius:50%;font-size:22px;cursor:pointer;box-shadow:0 6px 24px rgba(192,57,43,.5);transition:transform .2s;display:flex;align-items:center;justify-content:center;}
+.float-btn:hover{transform:scale(1.1);}
+
+@media(max-width:768px){ .hero{grid-template-columns:1fr;padding:90px 20px 40px;gap:36px;} .hero::before{display:none;} .ssdi{grid-template-columns:1fr;padding:60px 20px;} .cases,.how,.testi,.bcta{padding:60px 20px;} nav{padding:0 18px;} .nav-links{display:none;} .trust-bar{padding:16px 20px;gap:24px;} footer{padding:22px 20px;} .step:not(:last-child)::after{display:none;}
+}
+
+@media (max-width: 480px) { .hero { grid-template-columns: 1fr !important; padding: 70px 16px 30px !important; gap: 24px !important; } .hero-content h1 { font-size: 32px !important; } .hero-content p { font-size: 14px !important; } .hero-tags { flex-wrap: wrap !important; gap: 8px !important; } .hero-tag { font-size: 13px !important; padding: 9px 14px !important; min-height: 44px !important; } .nav-cta { padding: 9px 16px !important; font-size: 13px !important; min-height: 44px !important; } .widget { max-width: 100% !important; } .w-chat { height: 240px !important; } .tap { min-height: 44px !important; font-size: 13px !important; padding: 10px 12px !important; } .modal { max-height: 90vh !important; overflow-y: auto !important; } .modal-bg { padding: 10px !important; align-items: flex-end !important; } .cases, .how, .testi, .bcta { padding: 40px 16px !important; } .ssdi { grid-template-columns: 1fr !important; padding: 40px 16px !important; } .trust-bar { padding: 12px 16px !important; gap: 16px !important; flex-wrap: wrap !important; } .trust-item { font-size: 12px !important; }
+}
+.chat-inp{width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:var(--r);font-size:13px;font-family:var(--sans);background:var(--cream);outline:none;box-sizing:border-box;}
+.chat-inp:focus{border-color:var(--rust);}
+</style>
+</head>
+<body>
+<div style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(15,30,61,.97);border-bottom:1px solid rgba(255,255,255,.1);padding:9px 20px;display:flex;align-items:center;gap:12px;font-family:system-ui,sans-serif;flex-wrap:wrap;">
+  <span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.35);background:rgba(255,255,255,.07);padding:3px 10px;border-radius:20px;flex-shrink:0;">Demo only</span>
+  <span style="font-size:13px;color:rgba(255,255,255,.6);">This is a demonstration preview — InjuredGuide.com is not accepting live submissions yet.</span>
+</div>
+<div style="height:40px;"></div>
+ <nav> <a href="#" class="nav-logo">Injured<em>Guide</em></a> <ul class="nav-links"> <li><a href="#cases" id="nl-cases">Case Types</a></li> <li><a href="#how" id="nl-how">How It Works</a></li> <li><a href="#ssdi" id="nl-ssdi">Disability</a></li> </ul> <div class="nav-right"> <div class="lang-pill"> <button class="lang-btn active" id="btn-en" onclick="setLang(&#39;en&#39;)">English</button> <button class="lang-btn" id="btn-es" onclick="setLang(&#39;es&#39;)">Español</button> </div> <button class="nav-cta" onclick="openModal()" id="nav-cta-btn">Free Help →</button> </div>
+</nav>
+
+<!-- DISCLOSURE BAR -->
+<div style="background:#1e2a35;border-bottom:1px solid rgba(255,255,255,.06);padding:8px 40px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;"> <span style="font-size:11px;color:rgba(255,255,255,.35);text-align:center;line-height:1.6;"> <strong style="color:rgba(255,255,255,.5)">Disclosure:</strong> InjuredGuide is not a law firm and does not provide legal or medical advice.  This does not affect your referral. Use of this site does not create an attorney-client relationship. &nbsp;·&nbsp;<a href="javascript:void(0)" style="color:rgba(192,57,43,.7);text-decoration:none;">Privacy Policy</a> &nbsp;·&nbsp;<a href="javascript:void(0)" style="color:rgba(192,57,43,.7);text-decoration:none;">HIPAA Notice</a> </span>
+</div>
+
+<!-- SPANISH BANNER -->
+<div id="es-banner" style="background:var(--rust);padding:10px 40px;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;"> <span style="font-size:14px;color:rgba(255,255,255,.9);">🇪🇸 ¿Prefiere español?</span> <button onclick="setLang(&#39;es&#39;);document.getElementById(&#39;es-banner&#39;).style.display=&#39;none&#39;;" style="background:var(--white);color:var(--rust);border:none;padding:6px 18px;border-radius:20px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--sans);">Ver en Español →</button>
+</div>
+
+<!-- HERO -->
+<section class="hero"> <div class="hero-content"> <div class="hero-rule"></div> <h1 id="hero-h1">You Were Hurt.<br>We Find You<br><em>Real Help.</em></h1> <p class="hero-sub" id="hero-sub">Injured at work, in an accident, or denied disability? We connect you with experienced attorneys and medical providers. Free case review. No upfront cost.</p> <div class="hero-tags" id="hero-tags"> <button class="hero-tag on" onclick="tagClick(this)">🦺 Work Injury</button> <button class="hero-tag" onclick="tagClick(this)">🚗 Car Accident</button> <button class="hero-tag" onclick="tagClick(this)">⚠️ Personal Injury</button> <button class="hero-tag" onclick="tagClick(this)">🚛 Trucking</button> <button class="hero-tag" onclick="tagClick(this)">📋 SS Disability</button> <button class="hero-tag" onclick="tagClick(this)">♿ Long Term Disability</button> </div> <div class="hero-trust"> <div class="trust-item"><div class="trust-dot"></div><span id="ht1">Free case review — no obligation</span></div> <div class="trust-item"><div class="trust-dot"></div><span id="ht2">Medical support available</span></div> <div class="trust-item"><div class="trust-dot"></div><span id="ht3">Submit anytime</span></div> </div> </div> <!-- WIDGET --> <div class="widget"> <div class="w-head"> <div class="w-av">⚖</div> <div><div class="w-title" id="w-title">Alex — Case Specialist</div><div class="w-sub" id="w-sub">InjuredGuide · Free · Confidential</div></div> <div class="w-dot"></div> </div> <div class="w-prog"><div class="w-fill" id="w-prog" style="width: 5%;"></div></div> <div class="w-chat" id="w-chat"><div class="msg bot"><div class="m-av">⚖</div><div class="bub">Hi, I'm Alex. If you've been hurt at work or in an accident, I can help connect you with an attorney — for free. What type of situation are you dealing with?</div></div></div> <div id="w-btns" class="w-btns"><button class="tap" onclick="openModalWith(&#39;Work injury&#39;)"><span style="font-size:18px;flex-shrink:0">🦺</span><span style="flex:1">Work injury</span><span class="tic"></span></button><button class="tap" onclick="openModalWith(&#39;Car accident&#39;)"><span style="font-size:18px;flex-shrink:0">🚗</span><span style="flex:1">Car accident</span><span class="tic"></span></button><button class="tap" onclick="openModalWith(&#39;Trucking accident&#39;)"><span style="font-size:18px;flex-shrink:0">🚛</span><span style="flex:1">Trucking accident</span><span class="tic"></span></button><button class="tap" onclick="openModalWith(&#39;Slip &amp; fall&#39;)"><span style="font-size:18px;flex-shrink:0">⚠️</span><span style="flex:1">Slip &amp; fall</span><span class="tic"></span></button><button class="tap" onclick="openModalWith(&#39;Personal injury&#39;)"><span style="font-size:18px;flex-shrink:0">⚖️</span><span style="flex:1">Personal injury</span><span class="tic"></span></button><button class="tap" onclick="openModalWith(&#39;Social Security Disability&#39;)"><span style="font-size:18px;flex-shrink:0">📋</span><span style="flex:1">Social Security Disability</span><span class="tic"></span></button><button class="tap" onclick="openModalWith(&#39;Long term disability&#39;)"><span style="font-size:18px;flex-shrink:0">♿</span><span style="flex:1">Long term disability</span><span class="tic"></span></button></div> <div id="w-input" style="display:none;"></div> <div class="w-foot" id="w-foot">🔒 Free case review · Confidential · No upfront cost</div> </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar"> <div class="tb-item"><div class="tb-num"></div><div class="tb-lbl" id="tb1">Clients helped</div></div> <div class="tb-item"><div class="tb-num">$0</div><div class="tb-lbl" id="tb2">Upfront cost</div></div> <div class="tb-item"><div class="tb-num">🔒</div><div class="tb-lbl" id="tb3">Confidential</div></div> <div class="tb-item"><div class="tb-num">✓</div><div class="tb-lbl" id="tb4">No obligation</div></div>
+</div>
+
+<!-- CASE TYPES -->
+<section class="cases" id="cases"> <div class="section-label" id="sl-cases">What We Handle</div> <div class="section-title" id="st-cases">What We Handle</div> <p class="section-sub" id="ss-cases">We focus on the cases that matter most — and where attorneys can make the biggest difference.</p> <div class="cases-grid"> <div class="case-card" onclick="openModalWith(&#39;Work injury&#39;)"> <div class="case-icon">🦺</div> <h3 id="cc1h">Work Injury</h3> <p id="cc1p">Hurt at work? You have rights even if your employer says you don't. We connect you with attorneys who fight for injured workers.</p> <div class="case-more" id="cc1m">Get matched →</div> </div> <div class="case-card" onclick="openModalWith(&#39;Car accident&#39;)"> <div class="case-icon">🚗</div> <h3 id="cc2h">Car Accidents</h3> <p id="cc2p">Whether it was a fender bender or a serious crash, if it wasn't your fault you may have a claim. Free case review.</p> <div class="case-more" id="cc2m">Get matched →</div> </div> <div class="case-card" onclick="openModalWith(&#39;Personal injury&#39;)"> <div class="case-icon">⚠️</div> <h3 id="cc3h">Personal Injury</h3> <p id="cc3p">Slip and fall, dog bites, defective products — if someone else's negligence caused your injury, you may have a claim.</p> <div class="case-more" id="cc3m">Get matched →</div> </div> <div class="case-card" onclick="openModalWith(&#39;Trucking accident&#39;)"> <div class="case-icon">🚛</div> <h3 id="cc4h">Trucking Accidents</h3> <p id="cc4p">Commercial truck crashes involve large insurance policies and multiple liable parties. High-value cases need specialist attorneys.</p> <div class="case-more" id="cc4m">Get matched →</div> </div> <div class="case-card" onclick="openModalWith(&#39;Social Security Disability&#39;)"> <div class="case-icon">📋</div> <h3 id="cc5h">Social Security Disability</h3> <p id="cc5p">Denied SSDI or SSD benefits? Most first applications are rejected. Our attorneys specialize in appeals and win.</p> <div class="case-more" id="cc5m">Get matched →</div> </div> <div class="case-card" onclick="openModalWith(&#39;Long term disability&#39;)"> <div class="case-icon">♿</div> <h3 id="cc6h">Long Term Disability</h3> <p id="cc6p">Insurance company denying your long term disability claim? We connect you with attorneys who fight back against LTD insurers.</p> <div class="case-more" id="cc6m">Get matched →</div> </div> </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how"> <div class="section-label" id="sl-how">The Process</div> <div class="section-title" id="st-how">Simple. Fast. <em style="color:var(--rust2)">Free.</em></div> <p class="section-sub" id="ss-how">Three steps to connecting with a legal team.</p> <div class="steps"> <div class="step"><div class="step-n">01</div><h3 id="step1h">Tell us what happened</h3><p id="step1p">Answer a few quick questions — mostly just tapping buttons. Takes about 90 seconds.</p></div> <div class="step"><div class="step-n">02</div><h3 id="step2h">We match your case</h3><p id="step2p">We review your case and connect you with the right attorney and medical provider for your situation and location.</p></div> <div class="step"><div class="step-n">03</div><h3 id="step3h">Get help — no upfront cost</h3><p id="step3p">Your case review is always free. Many attorneys work on contingency and doctors may treat on a lien — ask your matched attorney about fees.</p></div> <div class="step"><div class="step-n">04</div><h3 id="step4h">Your team fights for you</h3><p id="step4p">Legal and medical working together on your case gives you the best chance at full compensation.</p></div> </div>
+</section>
+
+<!-- SSDI -->
+<section class="ssdi" id="ssdi"> <div class="ssdi-visual"> <div class="ssdi-stat"><div class="n">67%</div><div class="l" id="ss1">of SSDI applications are denied on first try</div></div> <div class="ssdi-stat"><div class="n">2.1 yrs</div><div class="l" id="ss2">average wait without an attorney</div></div> <div class="ssdi-stat"><div class="n">3×</div><div class="l" id="ss3">higher approval rate with legal help</div></div> </div> <div> <div class="section-label" id="sl-ssdi">Disability Claims</div> <div class="section-title" id="st-ssdi">Denied? <em>Don't Give Up.</em></div> <p style="font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:16px;" id="ssdi-body">The SSA denies most applicants the first time — even people with serious conditions. An attorney changes everything.</p> <ul class="ssdi-list"> <li id="sli1">Free case review — find out if you may qualify</li> <li id="sli2">Free case review — no upfront cost to get started</li> <li id="sli3">Attorneys handle all paperwork, hearings, and appeals</li> <li id="sli4">We work with both SSDI and SSI cases</li> </ul> <button class="cta-btn rust" onclick="openModalWith(&#39;ssdi&#39;)" id="ssdi-cta">Check My Eligibility →</button> </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi"> <div class="section-label" id="sl-testi">Stories</div> <div class="section-title" id="st-testi">Real People. <em>Real Results.</em></div> <div class="testi-grid"> <div class="t-card"> <div class="stars">★★★★★</div> <p id="t1p">After my fall at the construction site my boss told me I couldn't file. InjuredGuide connected me with an attorney in two days. My case settled for way more than I expected.</p> <div class="t-author"><div class="t-av">MR</div><div><div class="t-name">Marcus R.</div><div class="t-case" id="t1c">Construction accident · Philadelphia, PA</div></div></div> </div> <div class="t-card"> <div class="stars">★★★★★</div> <p id="t2p">I applied for disability twice and got denied both times. The attorney InjuredGuide found me got my appeal approved and I received back pay I didn't even know I was owed.</p> <div class="t-author"><div class="t-av">DL</div><div><div class="t-name">Diane L.</div><div class="t-case" id="t2c">SSDI appeal · 2 prior denials</div></div></div> </div> <div class="t-card"> <div class="stars">★★★★★</div> <p id="t3p">A commercial truck ran a red light and hit me. I didn't know my rights. InjuredGuide matched me with a trucking attorney and a doctor who treated me at no cost while my case was open.</p> <div class="t-author"><div class="t-av">SP</div><div><div class="t-name">Sandra P.</div><div class="t-case" id="t3c">Truck accident · Cherry Hill, NJ</div></div></div> </div> </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bcta"> <h2 id="bcta-h">Don't Wait. Time Limits Apply.</h2> <p id="bcta-p">Most injury and disability cases have strict filing deadlines. The sooner you connect with an attorney, the stronger your case. Case review is always free.</p> <div class="btn-group"> <button class="btn-white" onclick="openModal()" id="bcta-btn">Start Free Case Review →</button>  </div>
+</section>
+
+<footer> <div><div class="f-logo">Injured<em>Guide</em></div><p style="margin-top:4px;" id="f-disc">© 2025 InjuredGuide LLC · Not a law firm · Not a healthcare provider · Attorney and medical provider matching service</p></div> <div class="f-links"> <a href="#" id="f1">Privacy</a><a href="#" id="f2">Terms</a><a href="#" id="f3">HIPAA</a><a href="#" id="f4">Disclaimer</a> </div>
+</footer>
+
+<button class="float-btn" onclick="openModal()">⚖</button>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal-bg" onclick="closeModalBg(event)"> <div class="modal"> <div class="w-head"> <div class="w-av">⚖</div> <div><div class="w-title" id="mw-title">Alex — Case Specialist</div><div class="w-sub" id="mw-sub">InjuredGuide · Free · Confidential</div></div> <div style="display:flex;align-items:center;gap:10px;margin-left:auto;"> <div class="w-dot"></div> <button onclick="closeModal()" style="background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:18px;padding:0;">✕</button> </div> </div> <div class="w-prog"><div class="w-fill" id="m-prog"></div></div> <div class="w-chat" id="m-chat"></div> <div id="m-btns"></div> <div id="m-input" style="display:none;"></div> <div class="w-foot" id="m-foot">🔒 Free case review · Confidential · No upfront cost</div> </div>
+</div>
+
+<script>
+
+// ── TRANSLATIONS ────────────────────────────────────────────────
+const L = { en:{ specName:'Alex — Case Specialist', specSub:'InjuredGuide · Free · Confidential', foot:'🔒 Free case review · Confidential · No upfront cost', navCta:'Free Help →', q0:"Hi, I'm Alex. If you've been hurt at work or in an accident, I can help connect you with an attorney — for free. What type of situation are you dealing with?", q1:'When did this happen?', q2:'What state are you in?', q3:'Have you seen a doctor yet?', q_emp:'What company do you work for?', q_rep:'Did you report it to your employer?', q_claim:'Was a workers comp claim filed?', q_fault:"Was it another driver's fault?", q_police:'Was a police report filed?', q_ctruck:'Was the other vehicle a big truck or commercial vehicle?', q_slip_where:'Where did the fall happen?', q_doc_type:'What kind of medical error happened?', q_work:'Are you currently working?', q_applied:'Have you applied for disability before?', q_outcome:'What happened with your application?', q_atty:'Do you have a lawyer right now?', q_lang:'What language do you prefer for your callback?', q_name:'What is your first name?', q_phone:'Best phone number to reach you?', q_zip:'What is your zip code?', q_dob:'What is your date of birth?', q_injury:'In a few words, what was injured? For example: back, shoulder, knee, head.', q_doi:'About when did the injury happen?', done:(n)=>`Thanks ${n}! ✅ Your case has been submitted. Your matched attorney will reach out to schedule a free case review — typically within one business day. There is no upfront cost.`, opts:{ wc: ['🦺','Work injury'], auto: ['🚗','Car accident'], pi: ['⚠️','Personal injury'], truck: ['🚛','Trucking accident'], ssd: ['📋','Social Security Disability'], ltd: ['♿','Long term disability'], week:'This week', month:'This month', months6:'1–6 months ago', older:'Over 6 months', yes:'✅ Yes', no:'❌ No', notsure:'🤷 Not sure', er:'🏥 ER / Hospital', doc:'👨‍⚕️ Doctor visit', nocare:'❌ Not yet', open:'✅ Open / Active', cldenied:'⛔ Denied', notfiled:'❌ Not filed yet', store:'🏪 Store / Business', prop:'🏠 Property / Parking lot', work:'🏗️ At work', other_loc:'📍 Other location', wrongmed:'💊 Wrong medication', surgery:'🔪 Surgery error', misdiag:'🔍 Misdiagnosis', other_med:'❓ Other', appdenied:'⛔ Denied', pending:'⏳ Still waiting', approved:'✅ Approved', noapplied:'❌ Never applied', ft:'✅ Yes, full time', pt:'⚡ Part time / limited', nowork:'❌ No, I cannot work', haveatty:'✅ Yes I have one', noatty:'❌ No lawyer', hadatty:'👋 Had one, not anymore', lang_en:'🇺🇸 English', lang_es:'🇪🇸 Español (Spanish)', }, qual_t:'✅ You\'re all set!', qual_b:'Your case has been submitted. Your matched attorney will contact you to schedule a free case review — typically within one business day. There is no upfront cost and no obligation.', disq_t:'Thank you for reaching out', disq_working:'To qualify for disability benefits you generally cannot be working full time. If your situation changes, please come back.', disq_approved:'It looks like you\'re already approved. If you\'re having issues with payments, contact the SSA directly or call us.', disq_hasatty:'It sounds like you are in good hands. Best of luck with your case.', namePh:'Your first name', phonePh:'Your phone number', empPh:'Employer name', zipPh:'Zip code', dobPh:'MM/DD/YYYY', injuryPh:'e.g. back, shoulder, knee', statePh:'e.g. PA, TX, FL', }, es:{ specName:'Alex — Especialista de Casos', specSub:'InjuredGuide · Gratis · Confidencial', foot:'🔒 Revisión gratis · Confidencial · Sin costo inicial', navCta:'Ayuda Gratis →', q0:'¡Hola! ¿Qué le pasó? Toque una opción:', q1:'¿Cuándo ocurrió esto?', q2:'¿En qué estado vive usted?', q3:'¿Ha visto a un médico?', q_emp:'¿Para qué empresa trabaja usted?', q_rep:'¿Lo reportó a su empleador?', q_claim:'¿Se presentó una reclamación de compensación laboral?', q_fault:'¿Fue culpa de otro conductor?', q_police:'¿Se hizo un reporte policial?', q_ctruck:'¿El otro vehículo era un camión grande o vehículo comercial?', q_slip_where:'¿Dónde ocurrió la caída?', q_doc_type:'¿Qué tipo de error médico ocurrió?', q_work:'¿Está trabajando actualmente?', q_applied:'¿Ha solicitado beneficios de discapacidad antes?', q_outcome:'¿Qué pasó con su solicitud?', q_atty:'¿Tiene un abogado ahora mismo?', q_lang:'¿En qué idioma prefiere que le llamen?', q_name:'¿Cuál es su nombre?', q_phone:'¿Cuál es su número de teléfono?', q_zip:'¿Cuál es su código postal?', q_dob:'¿Cuál es su fecha de nacimiento?', q_injury:'En pocas palabras, ¿qué parte del cuerpo se lesionó? Por ejemplo: espalda, hombro, rodilla.', q_doi:'¿Cuándo ocurrió aproximadamente la lesión?', done:(n)=>`¡Gracias ${n}! ✅ Su caso ha sido enviado. El abogado asignado se comunicará con usted para programar una revisión gratuita — generalmente dentro de un día hábil. Sin costo inicial.`, opts:{ wc: ['🦺','Lesión en el trabajo'], auto: ['🚗','Accidente de auto'], pi: ['⚠️','Lesión personal'], truck: ['🚛','Accidente de camión'], ssd: ['📋','Discapacidad del Seguro Social'], ltd: ['♿','Discapacidad a largo plazo'], week:'Esta semana', month:'Este mes', months6:'Hace 1–6 meses', older:'Hace más de 6 meses', yes:'✅ Sí', no:'❌ No', notsure:'🤷 No estoy seguro/a', er:'🏥 Sala de emergencias', doc:'👨‍⚕️ Visité a un médico', nocare:'❌ Todavía no', open:'✅ Abierta / Activa', cldenied:'⛔ Fue negada', notfiled:'❌ No se ha presentado', store:'🏪 Tienda / Negocio', prop:'🏠 Propiedad / Estacionamiento', work:'🏗️ En el trabajo', other_loc:'📍 Otro lugar', wrongmed:'💊 Medicamento equivocado', surgery:'🔪 Error en cirugía', misdiag:'🔍 Diagnóstico incorrecto', other_med:'❓ Otro', appdenied:'⛔ Negada', pending:'⏳ Todavía en proceso', approved:'✅ Aprobada', noapplied:'❌ Nunca he solicitado', ft:'✅ Sí, tiempo completo', pt:'⚡ Tiempo parcial / limitado', nowork:'❌ No, no puedo trabajar', haveatty:'✅ Sí, tengo uno', noatty:'❌ No tengo abogado', hadatty:'👋 Tuve uno, ya no', lang_en:'🇺🇸 English', lang_es:'🇪🇸 Español (Spanish)', }, qual_t:'✅ ¡Todo listo!', qual_b:'Su caso ha sido enviado. El abogado asignado se comunicará con usted para una revisión de caso gratuita — generalmente dentro de un día hábil. Sin costo inicial y sin obligación.', disq_t:'Gracias por comunicarse', disq_working:'Para calificar para beneficios de discapacidad generalmente no puede trabajar a tiempo completo. Si su situación cambia, vuelva a contactarnos.', disq_approved:'Parece que ya está aprobado/a. Si tiene problemas con sus pagos, contacte la SSA directamente o llámenos.', disq_hasatty:'Parece que está en buenas manos. ¡Buena suerte con su caso!', namePh:'Su nombre', phonePh:'Su número de teléfono', empPh:'Nombre del empleador', zipPh:'Código postal', dobPh:'MM/DD/AAAA', injuryPh:'ej. espalda, hombro, rodilla', statePh:'ej. PA, TX, FL', }
+};
+
+let lang='en';
+function tx(k,...a){const v=L[lang][k];return typeof v==='function'?v(...a):v;}
+function opt(k){return L[lang].opts[k];}
+
+// ── LANG TOGGLE — restarts both chats in new language ──────────
+function setLang(l){ lang=l; document.getElementById('btn-en').classList.toggle('active',l==='en'); document.getElementById('btn-es').classList.toggle('active',l==='es'); document.getElementById('nav-cta-btn').textContent=tx('navCta'); // Update static widget labels ['w-title','mw-title'].forEach(id=>document.getElementById(id).textContent=tx('specName')); ['w-sub','mw-sub'].forEach(id=>document.getElementById(id).textContent=tx('specSub')); ['w-foot','m-foot'].forEach(id=>document.getElementById(id).textContent=tx('foot')); document.documentElement.lang=l; applyTranslations(); // Restart hero chat in new language resetChat(heroC); // heroC not auto-started // Restart modal chat if open if(document.getElementById('modal-bg').classList.contains('open')){ resetChat(modalC); startFlow(modalC,null); } else { // Reset modal so it re-inits in correct lang when opened resetChat(modalC); modalInited=false; }
+}
+
+function resetChat(c){ document.getElementById(c.chatId).innerHTML=''; document.getElementById(c.btnsId).innerHTML=''; document.getElementById(c.inputId).style.display='none'; document.getElementById(c.inputId).innerHTML=''; document.getElementById(c.progId).style.width='5%'; c.data={};
+}
+
+function applyTranslations(){ const en=lang==='en'; document.getElementById('hero-h1').innerHTML=en ?"You Were Hurt.<br/>We Find You<br/><em>Real Help.</em>" :"Usted Fue Lastimado.<br/>Le Encontramos<br/><em>Ayuda Real.</em>"; document.getElementById('hero-sub').textContent=en ?"Injured at work, in an accident, or denied disability? We connect you with experienced attorneys and medical providers. Free case review. No upfront cost." :"¿Lesionado en el trabajo, en un accidente, o le negaron la discapacidad? Le conectamos con abogados y médicos. Revisión de caso gratis. Sin costo inicial."; document.getElementById('ht1').textContent=en?"Free case review — no obligation":"Revisión de caso gratis — sin obligación"; document.getElementById('ht2').textContent=en?"Medical support available":"Apoyo médico disponible"; document.getElementById('ht3').textContent=en?"Submit anytime":"Gratis · Sin obligación"; // Hero tags const tags=document.querySelectorAll('.hero-tag'); const tagLabels=en ?['🦺 Work Injury','🚗 Car Accident','⚠️ Personal Injury','🚛 Trucking','📋 SS Disability','♿ Long Term Disability'] :['🦺 Lesión Laboral','🚗 Accidente de Auto','⚠️ Lesión Personal','🚛 Camión','📋 Disc. Social','♿ Disc. Largo Plazo']; tags.forEach((t,i)=>{if(tagLabels[i])t.textContent=tagLabels[i];}); document.getElementById('sl-cases').textContent=en?"What We Handle":"Lo Que Manejamos"; document.getElementById('st-cases').innerHTML=en?"What We Handle":"Lo Que Manejamos"; document.getElementById('ss-cases').textContent=en ?"We handle the most important injury and disability case types — and connect you with specialists who win." :"Manejamos los tipos de casos de lesiones y discapacidad más importantes — y lo conectamos con especialistas que ganan."; document.getElementById('cc1h').textContent=en?"Work Injury":"Lesión en el Trabajo"; document.getElementById('cc1p').textContent=en ?"Hurt at work? You have rights even if your employer says you don't. We connect you with attorneys who fight for injured workers." :"¿Lastimado en el trabajo? Tiene derechos aunque su empleador diga lo contrario. Lo conectamos con abogados que luchan por los trabajadores."; document.getElementById('cc2h').textContent=en?"Car Accidents":"Accidentes de Auto"; document.getElementById('cc2p').textContent=en ?"Whether it was a fender bender or a serious crash, if it wasn't your fault you may have a claim. Free case review." :"Ya sea un choque menor o un accidente grave, si no fue su culpa puede tener un reclamo. Sin costo inicial."; document.getElementById('cc3h').textContent=en?"Personal Injury":"Lesión Personal"; document.getElementById('cc3p').textContent=en ?"Slip and fall, dog bites, defective products — if someone else's negligence caused your injury, you may have a claim." :"Caídas, mordeduras de perro, productos defectuosos — si la negligencia de alguien causó su lesión, puede tener un reclamo."; document.getElementById('cc4h').textContent=en?"Trucking Accidents":"Accidentes de Camión"; document.getElementById('cc4p').textContent=en ?"Commercial truck crashes involve large insurance policies and multiple liable parties. High-value cases need specialist attorneys." :"Los accidentes de camiones comerciales involucran grandes pólizas de seguros y múltiples responsables. Necesita un especialista."; document.getElementById('cc5h').textContent=en?"Social Security Disability":"Discapacidad del Seguro Social"; document.getElementById('cc5p').textContent=en ?"Denied SSDI or SSD benefits? Most first applications are rejected. Our attorneys specialize in appeals and win." :"¿Le negaron beneficios de discapacidad del Seguro Social? La mayoría son negados. Nuestros abogados se especializan en apelaciones."; document.getElementById('cc6h').textContent=en?"Long Term Disability":"Discapacidad a Largo Plazo"; document.getElementById('cc6p').textContent=en ?"Insurance company denying your long term disability claim? We connect you with attorneys who fight back against LTD insurers." :"¿La compañía de seguros le está negando su reclamación de discapacidad a largo plazo? Lo conectamos con abogados que pelean contra las aseguradoras."; ['cc1m','cc2m','cc3m','cc4m','cc5m','cc6m'].forEach(id=>{ const el=document.getElementById(id);if(el)el.textContent=en?"Get matched →":"Buscar ayuda →"; }); document.getElementById('sl-how').textContent=en?"The Process":"El Proceso"; document.getElementById('st-how').innerHTML=en ?"Simple. Fast. <em style='color:var(--rust2)'>Free.</em>" :"Simple. Rápido. <em style='color:var(--rust2)'>Gratis.</em>"; document.getElementById('step1h').textContent=en?"Tell us what happened":"Cuéntenos qué le pasó"; document.getElementById('step1p').textContent=en ?"Answer a few quick questions — mostly just tapping buttons. Takes about 90 seconds." :"Responda algunas preguntas rápidas — mayormente tocando botones. Toma unos 90 segundos."; document.getElementById('step2h').textContent=en?"We match your case":"Emparejamos su caso"; document.getElementById('step2p').textContent=en ?"We review your case and connect you with the right attorney and medical provider for your situation and location." :"Revisamos su caso y lo conectamos con el abogado y médico correctos para su situación y ubicación."; document.getElementById('step3h').textContent=en?"Get help — no upfront cost":"Obtenga ayuda — sin costo inicial"; document.getElementById('step3p').textContent=en ?"Your case review is always free. Many attorneys work on contingency and doctors may treat on a lien — ask your matched attorney about fees." :"La revisión de su caso es siempre gratis. Muchos abogados trabajan en contingencia y los médicos pueden tratar por embargo — pregúntele a su abogado sobre honorarios."; document.getElementById('step4h').textContent=en?"Your team fights for you":"Su equipo lucha por usted"; document.getElementById('step4p').textContent=en ?"Legal and medical working together on your case gives you the best chance at full compensation." :"Legal y médico trabajando juntos le da la mejor oportunidad de compensación completa."; document.getElementById('sl-ssdi').textContent=en?"Disability Claims":"Reclamaciones de Discapacidad"; document.getElementById('st-ssdi').innerHTML=en?"Denied? <em>Don't Give Up.</em>":"¿Negado? <em>No Se Rinde.</em>"; document.getElementById('ssdi-body').textContent=en ?"The SSA denies most applicants the first time — even people with serious conditions. An attorney changes everything." :"La SSA niega a la mayoría de los solicitantes la primera vez — incluso personas con condiciones graves. Un abogado lo cambia todo."; document.getElementById('sli1').textContent=en?"Free case review — find out if you may qualify":"Revisión gratuita — sepa si califica en minutos"; document.getElementById('sli2').textContent=en?"Free case review — no upfront cost to get started":"Revisión de caso gratis — sin costo inicial para comenzar"; document.getElementById('sli3').textContent=en?"Attorneys handle all paperwork, hearings, and appeals":"Los abogados manejan todo el papeleo, audiencias y apelaciones"; document.getElementById('sli4').textContent=en?"We work with SSDI, SSI, and Social Security cases":"Trabajamos con casos de SSDI, SSI y Seguro Social"; document.getElementById('ssdi-cta').textContent=en?"Check My Eligibility →":"Verificar Mi Elegibilidad →"; document.getElementById('sl-testi').textContent=en?"Stories":"Historias"; document.getElementById('st-testi').innerHTML=en?"Real People. <em>Real Results.</em>":"Personas Reales. <em>Resultados Reales.</em>"; document.getElementById('t1p').textContent=en ?"After my fall at the construction site my boss told me I couldn't file. InjuredGuide connected me with an attorney in two days. My case settled for way more than I expected." :"Después de mi caída en la obra, mi jefe me dijo que no podía presentar un reclamo. InjuredGuide me conectó con un abogado en dos días. Mi caso se resolvió por mucho más de lo que esperaba."; document.getElementById('t1c').textContent=en?"Construction accident · Philadelphia, PA":"Accidente de construcción · Philadelphia, PA"; document.getElementById('t2p').textContent=en ?"I applied for disability twice and got denied both times. The attorney InjuredGuide found me got my appeal approved and I received back pay I didn't even know I was owed." :"Solicité discapacidad dos veces y me la negaron las dos veces. El abogado que InjuredGuide me encontró logró que mi apelación fuera aprobada y recibí pagos atrasados que ni sabía que me debían."; document.getElementById('t2c').textContent=en?"SSDI appeal · 2 prior denials":"Apelación de SSDI · 2 negaciones previas"; document.getElementById('t3p').textContent=en ?"A commercial truck ran a red light and hit me. I didn't know my rights. InjuredGuide matched me with a trucking attorney and a doctor who treated me at no cost while my case was open." :"Un camión comercial pasó la luz roja y me golpeó. No sabía mis derechos. InjuredGuide me conectó con un abogado de camiones y un médico que me trató sin costo mientras mi caso estaba abierto."; document.getElementById('t3c').textContent=en?"Truck accident · Cherry Hill, NJ":"Accidente de camión · Cherry Hill, NJ"; document.getElementById('bcta-h').textContent=en?"Don't Wait. Time Limits Apply.":"No Espere. Hay Límites de Tiempo."; document.getElementById('bcta-p').textContent=en ?"Most injury and disability cases have strict filing deadlines. The sooner you connect with an attorney, the stronger your case. Case review is always free." :"La mayoría de los casos tienen fechas límite estrictas. Cuanto antes contacte un abogado, más fuerte será su caso. La revisión siempre es gratis."; document.getElementById('bcta-btn').textContent=en?"Start Free Case Review →":"Iniciar Revisión Gratuita →"; document.getElementById('bcta-call').textContent=en?"Call Now":"Llamar Ahora"; document.getElementById('f-disc').textContent=en ?"© 2025 InjuredGuide LLC · Not a law firm · Not a healthcare provider · Attorney and medical provider matching service" :"© 2025 InjuredGuide LLC · No es un bufete · Servicio de conexión con abogados"; document.getElementById('f1').textContent=en?"Privacy":"Privacidad"; document.getElementById('f2').textContent=en?"Terms":"Términos"; document.getElementById('f3').textContent=en?"HIPAA":"HIPAA"; document.getElementById('f4').textContent=en?"Disclaimer":"Aviso Legal"; document.getElementById('ss1').textContent=en?"of SSDI applications are denied on first try":"de las solicitudes de SSDI son negadas la primera vez"; document.getElementById('ss2').textContent=en?"average wait without an attorney":"espera promedio sin un abogado"; document.getElementById('ss3').textContent=en?"higher approval rate with legal help":"tasa de aprobación más alta con ayuda legal"; document.getElementById('tb1').textContent=en?"Clients helped":"Clientes ayudados"; document.getElementById('tb2').textContent=en?"Upfront cost":"Costo inicial"; document.getElementById('tb3').textContent=en?"Avg callback time":"Tiempo de respuesta"; document.getElementById('tb4').textContent=en?"Specialized case types":"Tipos de casos";
+}
+
+function tagClick(el){ document.querySelectorAll('.hero-tag').forEach(t=>t.classList.remove('on')); el.classList.add('on');
+}
+
+// ── CHAT ENGINE ─────────────────────────────────────────────────
+function makeChat(chatId,btnsId,inputId,progId){ return{chatId,btnsId,inputId,progId,data:{}};
+}
+const heroC=makeChat('w-chat','w-btns','w-input','w-prog');
+const modalC=makeChat('m-chat','m-btns','m-input','m-prog');
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function addMsg(c,text,isUser=false){ const w=document.getElementById(c.chatId); const d=document.createElement('div');d.className='msg '+(isUser?'user':'bot'); d.innerHTML=isUser ?`<div class="bub">${esc(text)}</div>` :`<div class="m-av">⚖</div><div class="bub">${esc(text)}</div>`; w.appendChild(d);w.scrollTop=w.scrollHeight;
+}
+function showTyping(c){ const w=document.getElementById(c.chatId); const d=document.createElement('div');d.className='msg bot'; d.innerHTML=`<div class="m-av">⚖</div><div class="bub"><div class="typing"><span></span><span></span><span></span></div></div>`; w.appendChild(d);w.scrollTop=w.scrollHeight;return d;
+}
+function setProg(c,p){document.getElementById(c.progId).style.width=p+'%';}
+function clearZones(c){ document.getElementById(c.btnsId).innerHTML=''; document.getElementById(c.btnsId).className='w-btns'; document.getElementById(c.inputId).style.display='none'; document.getElementById(c.inputId).innerHTML='';
+}
+function showTaps(c,opts,cb,grid2=false){ clearZones(c); const z=document.getElementById(c.btnsId); if(grid2)z.classList.add('grid2'); opts.forEach(o=>{ const icon=Array.isArray(o)?o[0]:''; const label=Array.isArray(o)?o[1]:o; const btn=document.createElement('button');btn.className='tap'; btn.innerHTML=grid2 ?`<span style="font-size:22px">${icon||label}</span><span style="font-size:13px;margin-top:2px">${label}</span>` :`${icon?`<span style="font-size:18px;flex-shrink:0;pointer-events:none">${icon}</span>`:''}<span style="flex:1;pointer-events:none">${label}</span><span class="tic" style="pointer-events:none"></span>`; btn.addEventListener('click',(e)=>{ e.stopPropagation(); console.log('tap clicked:',label); document.querySelectorAll('#'+c.btnsId+' .tap').forEach(b=>b.classList.remove('sel')); btn.classList.add('sel'); setTimeout(()=>{addMsg(c,label,true);clearZones(c);cb(label,o);},180); }); z.appendChild(btn); });
+}
+function showInput(c,ph,cb){ clearZones(c); const z=document.getElementById(c.inputId);z.style.display='flex';z.className='w-input'; const uid='inp_'+c.chatId,sid='snd_'+c.chatId; z.innerHTML=`<input id="${uid}" style="flex:1;border:none;outline:none;padding:13px 15px;font-size:16px;font-family:var(--sans);color:var(--ink);background:var(--white);height:auto;" placeholder="${esc(ph)}" autocomplete="off"/><button id="${sid}" style="background:var(--ink);color:var(--amber2);border:none;padding:0 18px;cursor:pointer;font-size:16px;">➤</button>`; const inp=document.getElementById(uid); const submit=()=>{const v=inp.value.trim();if(!v)return;addMsg(c,v,true);clearZones(c);cb(v);}; document.getElementById(sid).addEventListener('click',submit); inp.addEventListener('keydown',e=>{if(e.key==='Enter')submit();}); inp.focus();
+}
+function botSay(c,msg,then,delay=650){ const t=showTyping(c); setTimeout(()=>{t.remove();if(msg)addMsg(c,msg,false);if(then)then();},delay);
+}
+function showQual(c){ const w=document.getElementById(c.chatId); const d=document.createElement('div');d.className='qual-card'; d.innerHTML=`<h3>${tx('qual_t')}</h3><p>${tx('qual_b')}</p>`; w.appendChild(d);w.scrollTop=w.scrollHeight;clearZones(c);setProg(c,100);
+}
+function showDisq(c,reason){ clearZones(c);setProg(c,100);botSay(c,reason,null); }
+
+// ── FLOW ─────────────────────────────────────────────────────────
+const CT_MAP={'🦺':'wc','🚗':'auto','🚛':'truck','⚠️':'slip','⚖️':'pi','📋':'ssd','♿':'ltd'};
+
+function calcScore(d){
+  let s=3;
+  if(d.when&&(d.when.includes('week')||d.when.includes('month')&&!d.when.includes('1–6')))s+=2;
+  if(d.claim&&d.claim.includes('Yes')&&!d.claim.includes('stopped'))s++;
+  if(d.claim&&d.claim.includes('stopped'))s++;
+  if(d.treatment&&!d.treatment.includes('need one'))s++;
+  if(d.bodyParts&&(d.bodyParts.includes('Back / spine')||d.bodyParts.includes('Shoulder')||d.bodyParts.includes('Knee')||d.bodyParts.includes('Hip')))s++;
+  if(d.bodyParts&&d.bodyParts.length>=2)s++;
+  if(d.reported&&d.reported.toLowerCase().includes('yes'))s++;
+  if(d.coverage&&d.coverage.includes('denied'))s++;
+  if(d.caseType==='truck')s++;
+  if(d.hospitalized&&d.hospitalized.includes('Yes'))s++;
+  if(d.attorney&&(d.attorney.includes('second opinion')||d.attorney.includes('dropped')||d.attorney.includes('switch')))s++;
+  if(d.firstName&&d.lastName&&d.dob&&d.phone&&d.email&&d.zip)s++;
+  if(d.when&&d.when.includes('6 months'))s--;
+  return Math.max(1,Math.min(10,s));
+}
+
+// Shared helpers
+function askBodyParts(c,next){
+  setProg(c,50);
+  botSay(c,'Which part of your body was injured? Select up to 2.',()=>{
+    clearZones(c);
+    const z=document.getElementById(c.btnsId);
+    z.style.cssText='padding:8px 10px;display:flex;flex-wrap:wrap;gap:6px;background:var(--white);border-top:1px solid var(--border);';
+    const parts=['Head / face','Neck','Shoulder','Arm / elbow','Hand / wrist','Back / spine','Hip','Knee','Leg / ankle','Foot','Multiple areas','Other'];
+    let sel=[];
+    const doneBtn=document.createElement('button');
+    doneBtn.className='tap';
+    doneBtn.style.cssText='width:100%;margin-top:4px;background:var(--ink);color:var(--white);font-weight:700;opacity:.4;cursor:not-allowed;';
+    doneBtn.textContent='✓ Done — these are my injuries';
+    doneBtn.disabled=true;
+    parts.forEach(p=>{
+      const b=document.createElement('button');
+      b.style.cssText='padding:7px 10px;background:var(--cream);border:2px solid var(--border);border-radius:var(--r);font-size:12px;font-family:var(--sans);cursor:pointer;';
+      b.textContent=p;
+      b.onclick=()=>{
+        if(sel.includes(p)){
+          sel=sel.filter(x=>x!==p);
+          b.style.background='var(--cream)';b.style.borderColor='var(--border)';b.style.color='';
+        } else {
+          if(sel.length>=2)return;
+          sel.push(p);
+          b.style.background='var(--ink)';b.style.borderColor='var(--rust)';b.style.color='var(--white)';
+        }
+        doneBtn.disabled=sel.length===0;
+        doneBtn.style.opacity=sel.length?'1':'.4';
+        doneBtn.style.cursor=sel.length?'pointer':'not-allowed';
+      };
+      z.appendChild(b);
+    });
+    doneBtn.onclick=()=>{
+      if(!sel.length)return;
+      c.data.bodyParts=sel;
+      addMsg(c,sel.join(', '),true);
+      clearZones(c);
+      // Optional description
+      setProg(c,54);
+      botSay(c,'Briefly describe what happened (optional):',()=>{
+        clearZones(c);
+        const inp=document.getElementById(c.inputId);
+        inp.style.display='block';
+        inp.innerHTML='<div style="display:flex;flex-direction:column;gap:6px;padding:4px;">'
+          +'<textarea id="desc-ta" maxlength="200" style="width:100%;padding:8px;border:1.5px solid var(--border);border-radius:var(--r);font-size:13px;font-family:var(--sans);resize:none;height:60px;background:var(--cream);" placeholder="e.g. Fell from scaffolding and hurt my back..."></textarea>'
+          +'<div style="font-size:10px;color:#aaa;text-align:right;" id="desc-cnt">0 / 200</div>'
+          +'<div style="display:flex;gap:8px;">'
+          +'<button class="tap sel" style="flex:1;" onclick="igDescNext()">Next →</button>'
+          +'<button onclick="igDescSkip()" style="background:none;border:none;font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;padding:8px;">Skip</button>'
+          +'</div></div>';
+        const ta=document.getElementById('desc-ta');
+        ta.oninput=()=>{document.getElementById('desc-cnt').textContent=ta.value.length+' / 200';};
+        window._igDescC=c; window._igDescNext=next;
+      });
+    };
+    z.appendChild(doneBtn);
+  });
+}
+
+function askDoctorNoPanel(c,next){
+  setProg(c,64);
+  botSay(c,'Have you seen a doctor?',()=>showTaps(c,[
+    'Yes — ER / Hospital',
+    'Yes — Urgent Care',
+    'Yes — My own doctor',
+    'No — I need one'
+  ],(lbl)=>{c.data.treatment=lbl;next(c);}));
+}
+function askDoctor(c,next){
+  setProg(c,64);
+  botSay(c,'Have you seen a doctor?',()=>showTaps(c,[
+    opt('er')||['🏥','Yes — ER / Hospital'],
+    ['🏢','Yes — Urgent Care'],
+    ['👨‍⚕️','Yes — Employer assigned doctor'],
+    ['🩺','Yes — My own doctor'],
+    ['❌','No — I need one']
+  ],(lbl)=>{c.data.treatment=lbl;next(c);}));
+}
+
+function askCoverage(c,next){
+  setProg(c,70);
+  botSay(c,'Are you having any issues with your coverage?',()=>showTaps(c,[
+    ['⛔','Yes — treatments being denied'],
+    ['⚠️','Yes — other coverage issues'],
+    ['✅','No'],
+    ['🤷','Not sure']
+  ],(lbl)=>{c.data.coverage=lbl;next(c);}));
+}
+
+function askAttorney(c,next){
+  setProg(c,78);
+  botSay(c,'Do you have an attorney?',()=>showTaps(c,[
+    ['❌','No — I need one'],
+    ['🔄','Yes — want a second opinion'],
+    ['🔀','Yes — want to switch'],
+    ['👋','My attorney dropped my case'],
+    ['✅','Yes — satisfied']
+  ],(lbl)=>{
+    c.data.attorney=lbl;
+    if(lbl.includes('satisfied')){
+      clearZones(c);setProg(c,100);
+      botSay(c,'It sounds like you are in good hands. Best of luck with your case.',null);
+      return;
+    }
+    if(!lbl.includes('need one'))c.data.attyFlag=true;
+    next(c);
+  }));
+}
+
+function askContact(c){
+  setProg(c,88);
+  botSay(c,'Last step — how can an attorney reach you?',()=>{
+    clearZones(c);
+    const inp=document.getElementById(c.inputId);
+    inp.style.display='block';
+    inp.innerHTML=`
+      <div style="display:flex;flex-direction:column;gap:8px;padding:4px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+          <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:2px;">First name</div><input id="ci-fn" class="chat-inp" type="text" placeholder="First name"/></div>
+          <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:2px;">Last name</div><input id="ci-ln" class="chat-inp" type="text" placeholder="Last name"/></div>
+        </div>
+        <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:2px;">Date of birth</div><input id="ci-dob" class="chat-inp" type="text" placeholder="MM/DD/YYYY"/></div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:6px;">
+          <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:2px;">City</div><input id="ci-city" class="chat-inp" type="text" placeholder="City"/></div>
+          <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:2px;">State</div><input id="ci-st" class="chat-inp" type="text" placeholder="PA"/></div>
+          <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:2px;">ZIP</div><input id="ci-zip" class="chat-inp" type="tel" placeholder="ZIP"/></div>
+        </div>
+        <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:2px;">Phone</div><input id="ci-ph" class="chat-inp" type="tel" placeholder="(555) 555-0100"/></div>
+        <div><div style="font-size:10px;font-weight:700;text-transform:uppercase;color:#999;margin-bottom:2px;">Email</div><input id="ci-em" class="chat-inp" type="email" placeholder="your@email.com"/></div>
+        <button class="tap" style="width:100%;padding:12px;font-size:14px;font-weight:700;background:var(--rust);color:var(--white);border:none;" onclick="igSubmit()">Submit — connect me with an attorney →</button>
+        <div id="ci-err" style="color:var(--rust);font-size:12px;display:none;"></div>
+      </div>`;
+    window._igC=c;
+  });
+}
+
+function igSubmit(){
+  const c=window._igC;
+  const fn=document.getElementById('ci-fn')?.value.trim();
+  const ln=document.getElementById('ci-ln')?.value.trim();
+  const dob=document.getElementById('ci-dob')?.value.trim();
+  const city=document.getElementById('ci-city')?.value.trim();
+  const st=document.getElementById('ci-st')?.value.trim();
+  const zip=document.getElementById('ci-zip')?.value.trim();
+  const ph=document.getElementById('ci-ph')?.value.trim();
+  const em=document.getElementById('ci-em')?.value.trim();
+  const missing=[];
+  if(!fn)missing.push('First name');
+  if(!ln)missing.push('Last name');
+  if(!ph)missing.push('Phone');
+  if(!em||!em.includes('@'))missing.push('Email');
+  if(!zip)missing.push('ZIP');
+  if(missing.length){
+    const err=document.getElementById('ci-err');
+    if(err){err.textContent='Please complete: '+missing.join(', ');err.style.display='block';}
+    return;
+  }
+  Object.assign(c.data,{firstName:fn,lastName:ln,name:fn+' '+ln,dob,city,homeState:st,zip,phone:ph,email:em});
+  const inp=document.getElementById(c.inputId);
+  if(inp){inp.style.display='none';inp.innerHTML='';}
+  addMsg(c,fn+' '+ln+' · '+ph+' · '+em,true);
+  finalize(c);
+}
+
+function showDisq(c,msg){
+  clearZones(c);setProg(c,100);
+  botSay(c,msg,null);
+}
+
+function igDescNext(){
+  const c=window._igDescC; const next=window._igDescNext;
+  const ta=document.getElementById('desc-ta');
+  if(ta&&ta.value.trim())c.data.description=ta.value.trim();
+  const inp=document.getElementById(c.inputId);
+  if(inp){inp.style.display='none';inp.innerHTML='';}
+  if(ta&&ta.value.trim())addMsg(c,ta.value.trim(),true);
+  next(c);
+}
+function igDescSkip(){
+  const c=window._igDescC; const next=window._igDescNext;
+  const inp=document.getElementById(c.inputId);
+  if(inp){inp.style.display='none';inp.innerHTML='';}
+  next(c);
+}
+function finalize(c){
+  setProg(c,100);
+  c.data.score=calcScore(c.data);
+  c.data.refId='IG-C-'+new Date().getFullYear()+'-'+Math.floor(100000+Math.random()*900000);
+  botSay(c,tx('done',c.data.firstName||c.data.name||''),()=>showQual(c));
+  console.log('InjuredGuide submission:',JSON.stringify(c.data,null,2));
+}
+
+// Case flows
+function flowWC(c){
+  setProg(c,15);
+  botSay(c,'When did this happen?',()=>showTaps(c,[
+    'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
+  ],(lbl)=>{
+    c.data.when=lbl;
+    if(lbl.includes('2 years')){clearZones(c);setProg(c,100);botSay(c,'Based on the timing you described, the window to file a claim may have passed in your state. We recommend speaking with a licensed attorney directly to confirm — some situations have exceptions that apply.',null);return;}
+    setProg(c,22);
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,[
+      'Pennsylvania','New Jersey','Delaware'
+    ],(lbl2)=>{
+      c.data.incidentState=lbl2;
+      askBodyParts(c,(c2)=>{
+        // Employer name
+        setProg(c2,58);
+        botSay(c2,'What is the name of your employer?',()=>{
+          showInput(c2,'Employer or company name',v=>{
+            c2.data.employer=v.trim();
+            setProg(c2,62);
+            botSay(c2,'Did you report this to your employer?',()=>showTaps(c2,[
+              'Yes','No','Not yet','I tried but was ignored'
+            ],(lbl3)=>{
+              c2.data.reported=lbl3;
+              setProg(c2,68);
+              botSay(c2,"Has a workers' comp claim been filed?",()=>showTaps(c2,[
+                'Yes','Yes — but benefits were stopped','No','Not sure'
+              ],(lbl4)=>{
+                c2.data.claim=lbl4;
+                askDoctor(c2,(c3)=>askCoverage(c3,(c4)=>askAttorney(c4,askContact)));
+              }));
+            }));
+          });
+        });
+      });
+    }));
+  }));
+}
+
+function flowAuto(c){
+  setProg(c,15);
+  botSay(c,'When did this happen?',()=>showTaps(c,[
+    'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
+  ],(lbl)=>{
+    c.data.when=lbl;
+    if(lbl.includes('2 years')){clearZones(c);setProg(c,100);botSay(c,'Based on the timing you described, the window to file a claim may have passed in your state. We recommend speaking with a licensed attorney directly to confirm — some situations have exceptions that apply.',null);return;}
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl2)=>{
+      c.data.incidentState=lbl2;
+      botSay(c,'What was your role?',()=>showTaps(c,['Driver','Passenger','Pedestrian','Cyclist'],(lbl3)=>{
+        c.data.role=lbl3;
+        botSay(c,'Who was at fault?',()=>showTaps(c,['Other driver','Shared fault','Hit and run','Not sure'],(lbl4)=>{
+          c.data.fault=lbl4;
+          botSay(c,'Was a police report filed?',()=>showTaps(c,['Yes','No','Not sure'],(lbl5)=>{
+            c.data.police=lbl5;
+            botSay(c,'Was the other driver insured?',()=>showTaps(c,['Yes','No — uninsured','Hit and run','Not sure'],(lbl6)=>{
+              c.data.insured=lbl6;
+              askBodyParts(c,(c2)=>askDoctorNoPanel(c2,(c3)=>askAttorney(c3,askContact)));
+            }));
+          }));
+        }));
+      }));
+    }));
+  }));
+}
+
+function flowTruck(c){
+  setProg(c,15);
+  botSay(c,'When did this happen?',()=>showTaps(c,[
+    'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
+  ],(lbl)=>{
+    c.data.when=lbl;
+    if(lbl.includes('2 years')){clearZones(c);setProg(c,100);botSay(c,'Based on the timing you described, the window to file a claim may have passed in your state. We recommend speaking with a licensed attorney directly to confirm — some situations have exceptions that apply.',null);return;}
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl2)=>{
+      c.data.incidentState=lbl2;
+      botSay(c,'What type of commercial vehicle?',()=>showTaps(c,['Semi / 18-wheeler','Delivery truck','Box truck','Not sure'],(lbl3)=>{
+        c.data.truckType=lbl3;
+        botSay(c,'Did the truck driver receive a citation?',()=>showTaps(c,['Yes','No','Not sure'],(lbl4)=>{
+          c.data.citation=lbl4;
+          botSay(c,'Were you hospitalized?',()=>showTaps(c,['Yes','No — treated and released','Not yet treated'],(lbl5)=>{
+            c.data.hospitalized=lbl5;
+            botSay(c,'Was surgery required or recommended?',()=>showTaps(c,['Yes — already had surgery','Yes — recommended','Possibly','No'],(lbl6)=>{
+              c.data.surgery=lbl6;
+              askBodyParts(c,(c2)=>askDoctorNoPanel(c2,(c3)=>askAttorney(c3,askContact)));
+            }));
+          }));
+        }));
+      }));
+    }));
+  }));
+}
+
+function flowSlip(c){
+  setProg(c,15);
+  botSay(c,'When did this happen?',()=>showTaps(c,[
+    'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
+  ],(lbl)=>{
+    c.data.when=lbl;
+    if(lbl.includes('2 years')){clearZones(c);setProg(c,100);botSay(c,'Based on the timing you described, the window to file a claim may have passed in your state. We recommend speaking with a licensed attorney directly to confirm — some situations have exceptions that apply.',null);return;}
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl2)=>{
+      c.data.incidentState=lbl2;
+      botSay(c,'Where did this happen?',()=>showTaps(c,['Store or business',"Someone else's property",'Sidewalk or public area','Restaurant or venue','Workplace','Other'],(lbl3)=>{
+        c.data.slipWhere=lbl3;
+        botSay(c,'Who was responsible?',()=>showTaps(c,['Property owner','Business','Government / municipality','Not sure'],(lbl4)=>{
+          c.data.responsible=lbl4;
+          botSay(c,'Was an incident report filed?',()=>showTaps(c,['Yes','No','Not sure'],(lbl5)=>{
+            c.data.report=lbl5;
+            askBodyParts(c,(c2)=>askDoctorNoPanel(c2,(c3)=>{
+              botSay(c3,'Did you miss work because of this?',()=>showTaps(c3,['Yes — still out','Yes — returned to work','No'],(lbl6)=>{
+                c3.data.missedWork=lbl6;
+                askAttorney(c3,askContact);
+              }));
+            }));
+          }));
+        }));
+      }));
+    }));
+  }));
+}
+
+function flowPI(c){
+  setProg(c,15);
+  botSay(c,'When did this happen?',()=>showTaps(c,[
+    'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
+  ],(lbl)=>{
+    c.data.when=lbl;
+    if(lbl.includes('2 years')){clearZones(c);setProg(c,100);botSay(c,'Based on the timing you described, the window to file a claim may have passed in your state. We recommend speaking with a licensed attorney directly to confirm — some situations have exceptions that apply.',null);return;}
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl2)=>{
+      c.data.incidentState=lbl2;
+      botSay(c,'What type of injury?',()=>showTaps(c,['Dog bite','Assault / battery','Defective product','Construction accident','Medical error','Other'],(lbl3)=>{
+        c.data.piType=lbl3;
+        botSay(c,'Who was responsible?',()=>showTaps(c,['Another person','A business','Property owner','Not sure'],(lbl4)=>{
+          c.data.responsible=lbl4;
+          botSay(c,'Was a police or incident report filed?',()=>showTaps(c,['Yes','No','Not sure'],(lbl5)=>{
+            c.data.report=lbl5;
+            askBodyParts(c,(c2)=>askDoctorNoPanel(c2,(c3)=>askAttorney(c3,askContact)));
+          }));
+        }));
+      }));
+    }));
+  }));
+}
+
+function flowSSD(c){
+  setProg(c,15);
+  botSay(c,'Are you currently unable to work full-time due to a medical condition?',()=>showTaps(c,[
+    'Yes — I cannot work full-time','No — I am still working full-time'
+  ],(lbl)=>{
+    c.data.unableToWork=lbl;
+    if(lbl.includes('No')){clearZones(c);setProg(c,100);botSay(c,'To qualify for disability benefits you generally need to be unable to work full-time. If your situation changes, we are here.',null);return;}
+    botSay(c,'Is your condition expected to last 12 months or longer?',()=>showTaps(c,[
+      'Yes — 12 months or longer','No — shorter term condition'
+    ],(lbl2)=>{
+      c.data.conditionDuration=lbl2;
+      if(lbl2.includes('No')){clearZones(c);setProg(c,100);botSay(c,'Disability benefits typically require a condition lasting at least 12 months. If your situation changes, we are here.',null);return;}
+      botSay(c,'What is the general nature of your condition?',()=>showTaps(c,[
+        'Back or spine','Joint or musculoskeletal','Heart or cardiovascular','Mental health','Cancer','Neurological','Other'
+      ],(lbl3)=>{
+        c.data.condition=lbl3;
+        botSay(c,'Have you applied for Social Security Disability benefits?',()=>showTaps(c,[
+          'Yes — denied once','Yes — denied twice or more','Yes — appeal pending','Not yet applied'
+        ],(lbl4)=>{
+          c.data.ssdApplied=lbl4;
+          botSay(c,'Did your employer provide a disability insurance policy, or did you purchase one yourself?',()=>showTaps(c,[
+            'Yes — workplace or private policy','No private policy','I am not sure'
+          ],(lbl5)=>{
+            c.data.ltdPolicy=lbl5;
+            botSay(c,'Have you worked and paid Social Security taxes for at least 5 out of the last 10 years?',()=>showTaps(c,[
+              'Yes','No'
+            ],(lbl6)=>{
+              c.data.ssWorkHistory=lbl6;
+              const hasPolicy=c.data.ltdPolicy.includes('Yes');
+              const hasWork=lbl6==='Yes';
+              c.data.leadType=hasPolicy&&hasWork?'Premium Dual Lead':hasPolicy?'LTD Only Lead':hasWork?'Standard SSDI Lead':'SSI Lead';
+              botSay(c,'Which state do you live in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl7)=>{
+                c.data.homeState=lbl7;
+                askAttorney(c,askContact);
+              }));
+            }));
+          }));
+        }));
+      }));
+    }));
+  }));
+}
+
+function flowLTD(c){flowSSD(c);}
+
+function startFlow(c,prefill){
+  c.data={};setProg(c,5);
+  const cases=[
+    ['🦺','Work injury'],['🚗','Car accident'],['🚛','Trucking accident'],
+    ['⚠️','Slip & fall'],['⚖️','Personal injury'],
+    ['📋','Social Security Disability'],['♿','Long term disability']
+  ];
+  const route=(type,label)=>{
+    c.data.caseType=type;
+    if(label)addMsg(c,label,true);
+    if(type==='wc')flowWC(c);
+    else if(type==='auto')flowAuto(c);
+    else if(type==='truck')flowTruck(c);
+    else if(type==='slip')flowSlip(c);
+    else if(type==='pi')flowPI(c);
+    else if(type==='ssd')flowSSD(c);
+    else if(type==='ltd')flowLTD(c);
+    else flowWC(c);
+  };
+  if(prefill){
+    const pl=prefill.toLowerCase();
+    let type='wc';
+    const map={'work':'wc','car':'auto','truck':'truck','slip':'slip','fall':'slip','personal':'pi','social':'ssd','security':'ssd','long term':'ltd','ltd':'ltd','ssd':'ssd'};
+    for(const[k,v]of Object.entries(map)){if(pl.includes(k)){type=v;break;}}
+    const match=cases.find(cs=>CT_MAP[cs[0]]===type);
+    route(type,match?match[1]:null);
+  } else {
+    botSay(c,tx('q0'),()=>{
+      showTaps(c,cases,(lbl,o)=>{
+        const type=CT_MAP[Array.isArray(o)?o[0]:''||'🦺']||'wc';
+        route(type,null);
+      });
+    });
+  }
+}
+
+// ── MODAL ───────────────────────────────────────────────────────
+let modalInited=false;
+function openModal(){
+  console.log('openModal called');
+  document.getElementById('modal-bg').classList.add('open');
+  resetChat(modalC);
+  modalInited=true;
+  startFlow(modalC,null);
+}
+function openModalWith(type){
+  document.getElementById('modal-bg').classList.add('open');
+  resetChat(modalC);
+  modalInited=true;
+  startFlow(modalC,type);
+}
+function closeModal(){document.getElementById('modal-bg').classList.remove('open');}
+function closeModalBg(e){if(e.target===document.getElementById('modal-bg'))closeModal();}
+
+// ── INIT ────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded',()=>{ applyTranslations(); });
+
+</script>
+
+<!-- LEGAL FOOTER -->
+<div style="background:#0b0f14;padding:20px 40px;border-top:1px solid rgba(255,255,255,.04);"> <p style="font-size:11px;color:rgba(255,255,255,.2);line-height:1.8;max-width:900px;margin:0 auto;text-align:center;"> <strong style="color:rgba(255,255,255,.3)">Important Disclosures:</strong> InjuredGuide is not a law firm, legal referral service, or healthcare provider. InjuredGuide does not provide legal advice, medical advice, diagnoses, or treatment recommendations. Attorneys and medical providers listed in our  This fee arrangement does not influence referral matching, which is based on specialty, location, and availability. Use of this platform does not create an attorney-client relationship or a patient-provider relationship. InjuredGuide is not responsible for the services provided by any attorney or medical provider in its network. Results vary by case. Many attorneys handle injury and disability cases on a contingency basis — ask your matched attorney about their fee arrangement directly. Medical providers may treat patients on a lien basis — ask your provider about billing arrangements directly. InjuredGuide makes no guarantee of case outcome or recovery. Patient information is protected under applicable privacy laws. See our <a href="javascript:void(0)" style="color:rgba(192,57,43,.5);text-decoration:none;">Privacy Policy</a> and <a href="javascript:void(0)" style="color:rgba(192,57,43,.5);text-decoration:none;">HIPAA Notice</a> for details. </p>
+</div>
+
+
+
+</body></html>
