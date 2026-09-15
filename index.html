@@ -553,7 +553,7 @@ function flowWC(c){
   ],(lbl)=>igWhen(c,lbl,()=>{
     setProg(c,22);
     botSay(c,'Which state did this happen in?',()=>showTaps(c,[
-      'Pennsylvania','New Jersey','Delaware'
+      'Pennsylvania','Delaware'
     ],(lbl2)=>{
       c.data.incidentState=lbl2;
       askBodyParts(c,(c2)=>{
@@ -587,7 +587,7 @@ function flowAuto(c){
   botSay(c,'When did this happen?',()=>showTaps(c,[
     'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
   ],(lbl)=>igWhen(c,lbl,()=>{
-    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl2)=>{
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','Delaware'],(lbl2)=>{
       c.data.incidentState=lbl2;
       botSay(c,'What was your role?',()=>showTaps(c,['Driver','Passenger','Pedestrian','Cyclist'],(lbl3)=>{
         c.data.role=lbl3;
@@ -611,7 +611,7 @@ function flowTruck(c){
   botSay(c,'When did this happen?',()=>showTaps(c,[
     'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
   ],(lbl)=>igWhen(c,lbl,()=>{
-    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl2)=>{
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','Delaware'],(lbl2)=>{
       c.data.incidentState=lbl2;
       botSay(c,'What type of commercial vehicle?',()=>showTaps(c,['Semi / 18-wheeler','Delivery truck','Box truck','Not sure'],(lbl3)=>{
         c.data.truckType=lbl3;
@@ -635,7 +635,7 @@ function flowSlip(c){
   botSay(c,'When did this happen?',()=>showTaps(c,[
     'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
   ],(lbl)=>igWhen(c,lbl,()=>{
-    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl2)=>{
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','Delaware'],(lbl2)=>{
       c.data.incidentState=lbl2;
       botSay(c,'Where did this happen?',()=>showTaps(c,['Store or business',"Someone else's property",'Sidewalk or public area','Restaurant or venue','Workplace','Other'],(lbl3)=>{
         c.data.slipWhere=lbl3;
@@ -661,7 +661,7 @@ function flowPI(c){
   botSay(c,'When did this happen?',()=>showTaps(c,[
     'This week','This month','1–6 months ago','More than 6 months ago','More than 2 years ago'
   ],(lbl)=>igWhen(c,lbl,()=>{
-    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl2)=>{
+    botSay(c,'Which state did this happen in?',()=>showTaps(c,['Pennsylvania','Delaware'],(lbl2)=>{
       c.data.incidentState=lbl2;
       botSay(c,'What type of injury?',()=>showTaps(c,['Dog bite','Assault / battery','Defective product','Construction accident','Medical error','Other'],(lbl3)=>{
         c.data.piType=lbl3;
@@ -708,7 +708,7 @@ function flowSSD(c){
               const hasPolicy=c.data.ltdPolicy.includes('Yes');
               const hasWork=lbl6==='Yes';
               c.data.leadType=hasPolicy&&hasWork?'Premium Dual Lead':hasPolicy?'LTD Only Lead':hasWork?'Standard SSDI Lead':'SSI Lead';
-              botSay(c,'Which state do you live in?',()=>showTaps(c,['Pennsylvania','New Jersey','Delaware'],(lbl7)=>{
+              botSay(c,'Which state do you live in?',()=>showTaps(c,['Pennsylvania','Delaware'],(lbl7)=>{
                 c.data.homeState=lbl7;
                 askAttorney(c,askContact);
               }));
